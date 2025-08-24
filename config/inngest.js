@@ -10,18 +10,18 @@ export const inngest = new Inngest({ id: "mirora" });
 //inngest function to save user data to a databse
 export const syncUserCreation = inngest.createFunction(
   {
-    id: "sync-user-from-clerk",
+    id: 'sync-user-from-clerk',
   },
   {
-    event: "clerk/user.created",
+    event: 'clerk/user.created',
   },
   async ({ event }) => {
     // here we are destructuring
-    const { id, first_name, last_name, email_address, image_url } = event.data;
+    const { id, first_name, last_name, email_addresses, image_url } = event.data;
 
     const userData = {
       _id: id,
-      email: email_address[0].email_address,
+      email: email_addresses[0].email_address,
       name: first_name + " " + last_name,
       imageUrl: image_url,
     };
@@ -41,11 +41,11 @@ export const syncUserUpdation = inngest.createFunction(
   },
   async ({ event }) => {
     // here we are destructuring
-    const { id, first_name, last_name, email_address, image_url } = event.data;
+    const { id, first_name, last_name, email_addresses, image_url } = event.data;
 
     const userData = {
       _id: id,
-      email: email_address[0].email_address,
+      email: email_addresses[0].email_address,
       name: first_name + " " + last_name,
       imageUrl: image_url,
     };

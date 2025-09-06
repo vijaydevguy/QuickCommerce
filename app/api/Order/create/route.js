@@ -11,7 +11,7 @@ export async function POST(req) {
     const { address, items } = await req.json();
 
     if (!address || items.length === 0) {
-      return NextResponse.json({ success: false, message: "Invalid data" });
+      return NextResponse.json({ success: false, message: 'Invalid data' });
     }
 
     //calculate amount using items

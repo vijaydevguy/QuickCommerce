@@ -73,6 +73,7 @@ export const AppContextProvider = (props) => {
   };
 
   const addToCart = async (itemId) => {
+    // structuredclone is deep copy
     let cartData = structuredClone(cartItems);
     if (cartData[itemId]) {
       cartData[itemId] += 1;
@@ -93,7 +94,6 @@ export const AppContextProvider = (props) => {
         );
         toast.success("Item added to cart");
       } catch (error) {
-
         toast.error(error.message);
       }
     }
@@ -120,7 +120,6 @@ export const AppContextProvider = (props) => {
         );
         toast.success("Cart Updated");
       } catch (error) {
-
         toast.error(error.message);
       }
     }
